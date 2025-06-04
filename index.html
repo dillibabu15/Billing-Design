@@ -74,6 +74,35 @@
     </form>
 
     <script>
+      
+        window.onload = () => {
+        document.getElementById("name").value = sessionStorage.getItem("name") || "";
+        document.getElementById("email").value = sessionStorage.getItem("email") || "";
+        document.getElementById('address').value =sessionStorage.getItem("address") ||"";
+        document.getElementById('phone').value =sessionStorage.getItem("phone") ||"";
+        document.getElementById('amount').value =sessionStorage.getItem("amount") ||"";
+
+    };
+
+    
+    document.getElementById("name").addEventListener("input", () => {
+        sessionStorage.setItem("name", document.getElementById("name").value);
+    });
+
+    document.getElementById("email").addEventListener("input", () => {
+        sessionStorage.setItem("email", document.getElementById("email").value);
+    });
+       document.getElementById("address").addEventListener("input", () => {
+        sessionStorage.setItem("address", document.getElementById("address").value);
+    });
+
+    document.getElementById("phone").addEventListener("input", () => {
+        sessionStorage.setItem("phone", document.getElementById("phone").value);
+    });
+       document.getElementById("amount").addEventListener("input", () => {
+        sessionStorage.setItem("amount", document.getElementById("amount").value);
+    });
+
         function validateForm() {
             let isValid = true;
 
@@ -85,6 +114,10 @@
             const address = document.getElementById("address").value.trim();
             const phone = document.getElementById("phone").value.trim();
             const amount = document.getElementById("amount").value.trim();
+            
+            
+
+
          
 
             if (name === "") {
@@ -110,7 +143,18 @@
             
            // alert(name);
             return isValid;
+                
         }
+            document.cookie = "username=Dilli; path=/";
+
+            document.cookie = "name=" + encodeURIComponent(name) + "; path=/";
+            document.cookie = "email=" + encodeURIComponent(email) + "; path=/";
+
+            document.cookie = "address=" + encodeURIComponent(address) + "; path=/";
+            document.cookie = "phone=" + encodeURIComponent(phone) + "; path=/";
+            document.cookie = "amount=" + encodeURIComponent(amount) + "; path=/";
+            console.log(document.cookie);
+
     </script>
 </body> 
 </html>
